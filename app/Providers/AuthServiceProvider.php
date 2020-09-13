@@ -7,6 +7,13 @@ use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
+    public function register()
+    {
+        $this->app->bind(
+            'App\Repositories\User\UserRepositoryInterface',
+            'App\Repositories\User\UserRepository'
+        );
+    }
     /**
      * The policy mappings for the application.
      *

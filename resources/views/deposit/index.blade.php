@@ -7,7 +7,14 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">
-                        Wallets
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                Deposits of wallet - id: {{ print(request()->route('id')) }}
+                            </div>
+                            <div>
+                                <a href="/deposits-create/{{ print(request()->route('id')) }}" class="btn btn-sm btn-success">New</a>
+                            </div>
+                        </div>
                     </h5>
                 </div>
                 <div class="card-body">
@@ -20,18 +27,17 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data as $val)
+                            {{-- @foreach ($data as $val)
                           <tr>
                             <td class="text-center">{{ $val['id'] }}</td>
                             <td class="text-center">{{ $val['balance'] }}</td>
                             <td class="text-center">
-                                <a href="/deposits/{{ $val['id'] }}" class="btn btn-sm btn-secondary">Deposits</a>
+                                <a href="#" class="btn btn-sm btn-success">New</a>
                                 <a href="#" class="btn btn-sm btn-info">Transactions</a>
-                                <a href="#" class="btn btn-sm btn-success">Replenishment</a>
                                 <a href="#" class="btn btn-sm btn-warning">Withdrawal</a>
                             </td>
                           </tr>
-                            @endforeach
+                            @endforeach --}}
                         </tbody>
                       </table>
                 <div>

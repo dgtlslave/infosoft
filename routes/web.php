@@ -20,6 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
+    //wallets
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/wallet', [App\Http\Controllers\WalletController::class, 'index']);
+    //deposits
+    Route::get('/deposits/{user}', [App\Http\Controllers\DepositController::class, 'index']);
+    Route::get('/deposits-create/{user}', [App\Http\Controllers\DepositController::class, 'create']);
+    Route::post('/deposits-store', [App\Http\Controllers\DepositController::class, 'store']);
 });

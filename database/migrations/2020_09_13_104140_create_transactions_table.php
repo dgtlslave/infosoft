@@ -15,7 +15,16 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('wallet_id');
+            $table->unsignedBigInteger('deposit_id')->nullable();
+            $table->enum('type', ['enter', 'create_deposit', 'accrue', 'close_deposit']);
+            $table->double('amount', 8, 2)->default(0);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('wallet_id')->references('id')->on('wallets');
+            $table->foreign('deposit_id')->references('id')->on('deposits');
         });
     }
 

@@ -7,19 +7,18 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">
-                        Create new deposit
+                        Replenish the deposit:
                     </h5>
                 </div>
                 <div class="card-body">
                     <form action="{{url('deposits-store')}}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="amount">Deposit amount</label>
-                            <input type="text" class="form-control" name="amount" placeholder="34">
+                            <label for="amount">Replenish amount</label>
+                            <input type="text" class="form-control" name="replenish_amount" placeholder="34">
                         </div>
-                            <input type="hidden" class="form-control" name="user_id" value="{{ $data['id'] }}">
-                            <input type="hidden" class="form-control" name="wallet_id" value="{{ $data['wallets']['id'] }}">
-                        <button type="submit" class="btn btn-primary">Create</button>
+                            <input type="hidden" class="form-control" name="deposit_id" value="{{ $data['id'] }}">
+                        <button type="submit" class="btn btn-primary">Replenish</button>
                     </form>
                 <div>
             </div>

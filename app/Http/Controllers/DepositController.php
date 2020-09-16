@@ -18,20 +18,20 @@ class DepositController extends Controller
     }
 
 
-    public function index()
+    public function index($id)
     {
-        return view('deposit.index');
+        return view('deposit.index', ['data' => $this->depoRepo->allDepositsByUser($id)]);
     }
 
     public function create($id)
     {
-        return view('deposit.create',  ['data' => $this->depoRepo->createDeposit($id)]);
+        return view('deposit.create', ['data' => $this->depoRepo->createDeposit($id)]);
     }
 
     public function store(StoreDepositRequest $request)
     {
         $deposit = $this->depoRepo->storeDeposit($request->validated());
 
-        return redirect('/deposits-create' . '/' . $deposit->user_id);
+        return redirect()->to('deposits/' . $deposit->user_id);
     }
 }

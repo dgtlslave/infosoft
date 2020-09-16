@@ -20,7 +20,7 @@ class WalletController extends Controller
     {
 
         $wallet = $this->walletRepo->allWallet();
-        // $wallet = new WalletResource($wallet);
+
         return view('wallet.index', ['data' => $wallet]);
 
     }

@@ -8,6 +8,11 @@ use App\Models\Deposit;
 
 class DepositRepository implements DepositRepositoryInterface {
 
+    public function allDepositsByUser($id)
+    {
+        return Deposit::where(['user_id' => $id])->orderBy('created_at', 'desc')->get();
+    }
+
     public function createDeposit($data)
     {
         return User::find($data)->with('wallets')->first();
@@ -16,9 +21,9 @@ class DepositRepository implements DepositRepositoryInterface {
     public function storeDeposit($data)
     {
         $deposit = Deposit::create([
-            'user_id' => $data->user_id,
-            'wallet_id' => $data->wallet_id,
-            'invested' => $data->amount,
+            'user_id' => $data['user_id'],
+            'wallet_id' => $data['wallet_id'],
+            'invested' => $data['amount'],
             'percent' => 20.00,
             'active' => 1,
             'duration' => 10,

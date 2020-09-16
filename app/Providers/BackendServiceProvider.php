@@ -17,5 +17,10 @@ class BackendServiceProvider extends ServiceProvider
             'App\Repositories\Deposit\DepositRepositoryInterface',
             'App\Repositories\Deposit\DepositRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\Transaction\ReplanishmentTransactionRepositoryInterface',
+            'App\Repositories\Transaction\ReplanishmentTransactionRepository'
+        );
     }
 }

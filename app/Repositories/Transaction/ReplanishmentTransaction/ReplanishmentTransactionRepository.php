@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class ReplanishmentTransactionRepository implements ReplanishmentTransactionRepositoryInterface
 {
-    public function replanishment($data, $id)
+    public function replanishment($request, $id)
     {
-        $replanishment = $data->amount;
+        $replanishment = $request;
         $deposit = Deposit::find($id);
         $transaction = new Transaction;
         $total = $deposit->invested + $replanishment;
@@ -27,11 +27,14 @@ class ReplanishmentTransactionRepository implements ReplanishmentTransactionRepo
                     'type' => 'enter',
                     'amount' => $replanishment,
                 ]);
+
             } catch (\Exception $e) {
                 return $e;
             }
 
         });
+
+        return $deposit->user_id;
     }
 }
 

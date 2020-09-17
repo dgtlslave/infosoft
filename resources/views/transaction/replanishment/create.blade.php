@@ -6,18 +6,23 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">
-                        Replenish the deposit:
-                    </h5>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            Replenish the deposit id: {{ print(request()->route('deposit')) }}
+                        </div>
+                        <div>
+                            <a href="{{ url()->previous() }}" class="btn btn-sm btn-success">Back</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{url('deposits-store')}}" method="POST">
+                    <form action="/deposits/ {{ request()->route('deposit') }} /replanishment-store" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="amount">Replenish amount</label>
                             <input type="text" class="form-control" name="replenish_amount" placeholder="34">
                         </div>
-                            <input type="hidden" class="form-control" name="deposit_id" value="{{ $data['id'] }}">
+                            <input type="hidden" class="form-control" name="deposit_id" value="{{$data}}">
                         <button type="submit" class="btn btn-primary">Replenish</button>
                     </form>
                 <div>

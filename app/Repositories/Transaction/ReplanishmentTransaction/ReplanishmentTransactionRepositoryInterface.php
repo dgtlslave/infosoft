@@ -4,5 +4,5 @@ namespace App\Repositories\Transaction\ReplanishmentTransaction;
 
 interface ReplanishmentTransactionRepositoryInterface
 {
-    public function replanishment($data, $id);
+    public function replanishment($request, $id);
 }

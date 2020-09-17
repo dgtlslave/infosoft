@@ -19,8 +19,13 @@ class BackendServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
-            'App\Repositories\Transaction\ReplanishmentTransactionRepositoryInterface',
-            'App\Repositories\Transaction\ReplanishmentTransactionRepository'
+            'App\Repositories\Transaction\ReplanishmentTransaction\ReplanishmentTransactionRepositoryInterface',
+            'App\Repositories\Transaction\ReplanishmentTransaction\ReplanishmentTransactionRepository'
+        );
+
+        $this->app->bind(
+            'App\Repositories\Transactions\TransactionsRepositoryInterface',
+            'App\Repositories\Transactions\TransactionsRepository'
         );
     }
 }

@@ -27,10 +27,15 @@ class DepositRepository implements DepositRepositoryInterface {
             'percent' => 20.00,
             'active' => 1,
             'duration' => 10,
-            'accrue_times' => 1,
+            // 'accrue_times' => 1,
         ]);
 
         return $deposit;
+    }
+
+    public function depositsByid($id)
+    {
+        return Deposit::find($id)->first();
     }
 
 }

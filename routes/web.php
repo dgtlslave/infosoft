@@ -28,5 +28,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/deposits-create/{user}', [App\Http\Controllers\DepositController::class, 'create']);
     Route::post('/deposits-store', [App\Http\Controllers\DepositController::class, 'store']);
     //replanishment
-    Route::get('/deposits/{user}/replanishment', [App\Http\Controllers\ReplanishmentTransactionController::class, 'create']);
+    Route::get('/deposits/{deposit}/replanishment', [App\Http\Controllers\ReplanishmentTransactionController::class, 'create']);
+    Route::post('/deposits/{deposit}/replanishment-store', [App\Http\Controllers\ReplanishmentTransactionController::class, 'store']);
+    //transactions
+    Route::get('/deposits/{deposit}/transactions', [App\Http\Controllers\TransactionController::class, 'index']);
 });

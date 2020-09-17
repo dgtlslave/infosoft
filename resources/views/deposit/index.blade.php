@@ -39,10 +39,10 @@
                             <th class="text-center">{{ $val->duration }}</th>
                             <td class="text-center">
                                 @if ($val->active == 1)
-                                    <a href="#" class="btn btn-sm btn-success">Replenishment</a>
+                                    <a href="/deposits/{{ $val->id }}/replanishment" class="btn btn-sm btn-success">Replenishment</a>
                                 @endif
                                 <a href="#" class="btn btn-sm btn-warning">Withdrawal</a>
-                                <a href="#" class="btn btn-sm btn-info">Transactions</a>
+                                <a href="/deposits/{{ $val->id }}/transactions" class="btn btn-sm btn-info">Transactions</a>
                             </td>
                           </tr>
                             @endforeach

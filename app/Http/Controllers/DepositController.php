@@ -30,8 +30,8 @@ class DepositController extends Controller
 
     public function store(StoreDepositRequest $request)
     {
-        $deposit = $this->depoRepo->storeDeposit($request->validated());
-
-        return redirect()->to('deposits/' . $deposit->user_id);
+        $this->depoRepo->storeDeposit($request->validated());
+        return redirect()->to('/deposits/1');
+        // return redirect()->to('deposits/' . $deposit);
     }
 }

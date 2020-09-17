@@ -6,9 +6,14 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">
-                        Create new deposit
-                    </h5>
+                    <div class="d-flex justify-content-between">
+                        <div class="card-title">
+                            Create new deposit
+                        </div>
+                        <div>
+                            <a href="{{ url()->previous() }}" class="btn btn-sm btn-success">Back</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <form action="{{url('deposits-store')}}" method="POST">

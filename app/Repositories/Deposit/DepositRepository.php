@@ -5,6 +5,8 @@ namespace App\Repositories\Deposit;
 use App\Models\User;
 use App\Models\Wallet;
 use App\Models\Deposit;
+use App\Models\Transaction;
+use Illuminate\Support\Facades\DB;
 
 class DepositRepository implements DepositRepositoryInterface {
 
@@ -20,17 +22,32 @@ class DepositRepository implements DepositRepositoryInterface {
 
     public function storeDeposit($data)
     {
-        $deposit = Deposit::create([
-            'user_id' => $data['user_id'],
-            'wallet_id' => $data['wallet_id'],
-            'invested' => $data['amount'],
-            'percent' => 20.00,
-            'active' => 1,
-            'duration' => 10,
-            // 'accrue_times' => 1,
-        ]);
+        DB::transaction(function () use ($data) {
 
-        return $deposit;
+            try {
+                $deposit = Deposit::create([
+                    'user_id' => $data['user_id'],
+                    'wallet_id' => $data['wallet_id'],
+                    'invested' => $data['amount'],
+                    'percent' => 20.00,
+                    'active' => 1,
+                    'duration' => 10
+                    ]);
+
+                Transaction::create([
+                    'user_id' => $deposit->user_id,
+                    'wallet_id' => $deposit->wallet_id,
+                    'deposit_id' => $deposit->id,
+                    'type' => 'create_deposit',
+                    'amount' => $data['amount'],
+                ]);
+
+                return $deposit;
+
+            } catch (\Exception $e) {
+                return $e;
+            }
+        });
     }
 
     public function depositsByid($id)

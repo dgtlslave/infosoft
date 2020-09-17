@@ -32,4 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/deposits/{deposit}/replanishment-store', [App\Http\Controllers\ReplanishmentTransactionController::class, 'store']);
     //transactions
     Route::get('/deposits/{deposit}/transactions', [App\Http\Controllers\TransactionController::class, 'index']);
+    //withdrawal
+    // Route::get('/deposits/{deposit}/replanishment', [App\Http\Controllers\ReplanishmentTransactionController::class, 'create']);
+    // Route::post('/deposits/{deposit}/replanishment-store', [App\Http\Controllers\ReplanishmentTransactionController::class, 'store']);
 });
